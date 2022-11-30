@@ -10,21 +10,21 @@
             </div>
             <div class="buttons">
                 <div class="buttons-Up">
-                    <button class="btn" @click="move('Up')">
-                        <img id="Up" src="./assets/up.png">
+                    <button class="btn" @click="move('ArrowUp')">
+                        <img id="ArrowUp" src="./assets/up.png">
                     </button>
                 </div>
                 <div class="buttons-middle">
-                    <button class="btn" @click="move('Left')">
-                        <img id="Left" src="./assets/left.png">
+                    <button class="btn" @click="move('ArrowLeft')">
+                        <img id="ArrowLeft" src="./assets/left.png">
                     </button>
-                    <button class="btn" @click="move('Right')">
-                        <img id="Right" src="./assets/right.png">
+                    <button class="btn" @click="move('ArrowRight')">
+                        <img id="ArrowRight" src="./assets/right.png">
                     </button>
                 </div>
                 <div class="buttons-Up">
-                    <button class="btn" @click="move('Down')">
-                        <img id="Down" src="./assets/down.png">
+                    <button class="btn" @click="move('ArrowDown')">
+                        <img id="ArrowDown" src="./assets/down.png">
                     </button>
                 </div>
             </div>
@@ -35,7 +35,7 @@
     import game_cell from "./game-cell";
 
     export default {
-        name: 'game-board',
+        name: 'GameBoard',
         data() {
             return {
                 cells: [],
@@ -84,7 +84,7 @@
                 return v === this.cells[i + 1] || v === this.cells[i - 1] || v === this.cells[i + 4] || v === this.cells[i - 4]
             },
             onkeydown(e) {
-                if (['Left', 'Right', 'Up', 'Down'].includes(e.code)) {
+                if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.code)) {
                     this.move(e.code)
                 }
             },
@@ -97,7 +97,7 @@
                 this.addCells();
                 this.$forceUpdate();
             },
-            Left(k, arr) {
+            ArrowLeft(k, arr) {
                 for (let i = 0; i < 16; i++) {
                     let index = i - 1;
                     if (k === 3 && index >= 0 && i % 4 !== 0 && this.cells[i] !== 0 && this.cells[index] === this.cells[i] && ![i].includes(arr)) {
@@ -112,7 +112,7 @@
                     }
                 }
             },
-            Right(k, arr) {
+            ArrowRight(k, arr) {
                 for (let i = 15; i >= 0; i--) {
                     let index = i + 1;
                     if (k === 3 && index < 16 && i % 4 !== 3 && this.cells[i] !== 0 && this.cells[index] === this.cells[i] && ![i].includes(arr)) {
@@ -130,7 +130,7 @@
 
 
             },
-            Up(k, arr) {
+            ArrowUp(k, arr) {
                 for (let i = 0; i < 16; i++) {
                     let index = i - 4;
                     if (k === 3 && index >= 0 && this.cells[index] === this.cells[i] && this.cells[i] !== 0 && ![i].includes(arr)) {
@@ -145,7 +145,7 @@
                 }
 
             },
-            Down(k, arr) {
+            ArrowDown(k, arr) {
                 for (let i = 16; i >= 0; i--) {
                     let index = i + 4;
                     if (k === 3 && index < 16 && this.cells[i] !== 0 && this.cells[index] === this.cells[i] && ![i].includes(arr)) {
