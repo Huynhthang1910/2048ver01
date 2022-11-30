@@ -3,7 +3,7 @@
 </template>
 <script>
     export default {
-        name: 'GameCell',
+        name: 'game-cell',
         methods: {},
         props: {
             number: String
@@ -12,21 +12,21 @@
 </script>
 <style>
     .color0 {
-        background-color: #ecf0f1;
+        background-color: #dfe6e9;
         color: #fff;
     }
 
     @keyframes color_change2 {
         from {
-            background-color: #ecf0f1;
+            background-color: #dfe6e9;
         }
         to {
-            background-color: #1abc9c;
+            background-color: #74b9ff;
         }
     }
 
     .color2 {
-        background-color: #1abc9c;
+        background-color: #74b9ff;
         color: #fff;
         animation-name: color_change2;
         animation-duration: 0.20s;
@@ -35,16 +35,16 @@
 
     @keyframes color_change4 {
         from {
-            background-color: #1abc9c;
+            background-color: #74b9ff;
         }
         to {
-            background-color: #2ecc71;
+            background-color: #0984e3;
         }
     }
 
     .color4 {
         animation-name: color_change4;
-        background-color: #2ecc71;
+        background-color: #0984e3;
         color: #fff;
         animation-duration: 1s;
         animation-direction: alternate;
@@ -53,16 +53,16 @@
 
     @keyframes color_change8 {
         from {
-            background-color: #2ecc71;
+            background-color: #0984e3;
         }
         to {
-            background-color: #3498db;
+            background-color: #ff7675;
         }
     }
 
     .color8 {
         animation-name: color_change8;
-        background-color: #3498db;
+        background-color: #ff7675;
         color: #fff;
         animation-duration: 1s;
         animation-direction: alternate;
@@ -71,16 +71,16 @@
 
     @keyframes color_change16 {
         from {
-            background-color: #3498db;
+            background-color: #ff7675;
         }
         to {
-            background-color: #9b59b6;
+            background-color: #d63031;
         }
     }
 
     .color16 {
         animation-name: color_change16;
-        background-color: #9b59b6;
+        background-color: #d63031;
         color: #fff;
         font-size: 60px;
         animation-duration: 1s;
@@ -90,16 +90,16 @@
 
     @keyframes color_change32 {
         from {
-            background-color: #9b59b6;
+            background-color: #d63031;
         }
         to {
-            background-color: #34495e;
+            background-color: #a29bfe;
         }
     }
 
     .color32 {
         animation-name: color_change32;
-        background-color: #34495e;
+        background-color: #a29bfe;
         color: #fff;
         font-size: 60px;
         animation-duration: 1s;
@@ -109,16 +109,16 @@
 
     @keyframes color_change64 {
         from {
-            background-color: #34495e;
+            background-color: #a29bfe;
         }
         to {
-            background-color: #d2a50f;
+            background-color: #fd79a8;
         }
     }
 
     .color64 {
         animation-name: color_change64;
-        background-color: #d2a50f;
+        background-color: #fd79a8;
         color: #fff;
         font-size: 60px;
         animation-duration: 1s;
@@ -128,16 +128,16 @@
 
     @keyframes color_change128 {
         from {
-            background-color: #d2a50f;
+            background-color: #fd79a8;
         }
         to {
-            background-color: #e67e22;
+            background-color: #55efc4;
         }
     }
 
     .color128 {
         animation-name: color_change128;
-        background-color: #e67e22;
+        background-color: #55efc4;
         color: #fff;
         font-size: 56px;
         animation-duration: 1s;
@@ -147,16 +147,16 @@
 
     @keyframes color_change256 {
         from {
-            background-color: #e67e22;
+            background-color: #55efc4;
         }
         to {
-            background-color: #e74c3c;
+            background-color: #ffeaa7;
         }
     }
 
     .color256 {
         animation-name: color_change256;
-        background-color: #e74c3c;
+        background-color: #ffeaa7;
         color: #fff;
         font-size: 56px;
         animation-duration: 1s;
@@ -166,16 +166,16 @@
 
     @keyframes color_change512 {
         from {
-            background-color: #e74c3c;
+            background-color: #ffeaa7;
         }
         to {
-            background-color: #95a5a6;
+            background-color: #e17055;
         }
     }
 
     .color512 {
         animation-name: color_change512;
-        background-color: #95a5a6;
+        background-color: #e17055;
         color: #fff;
         font-size: 56px;
         animation-duration: 1s;
@@ -185,16 +185,16 @@
 
     @keyframes color_change1024 {
         from {
-            background-color: #95a5a6;
+            background-color: #e17055;
         }
         to {
-            background-color: #574b90;
+            background-color: #c0392b;
         }
     }
 
     .color1024 {
         animation-name: color_change1024;
-        background-color: #574b90;
+        background-color: #c0392b;
         color: #fff;
         font-size: 46px;
         animation-duration: 1s;
@@ -204,28 +204,28 @@
 
     @keyframes color_change2048 {
         from {
-            background-color: #574b90;
+            background-color: #c0392b;
         }
         to {
-            background-color: #303952;
+            background-color: #f1c40f;
         }
     }
 
     .color2048 {
         animation-name: color_change2048;
-        background-color: #303952;
+        background-color: #f1c40f;
         color: #fff;
         font-size: 46px;
     }
 
     .color4096 {
-        background-color: #c44569;
+        background-color: #1abc9c;
         color: #fff;
         font-size: 46px;
     }
 
     .color8192 {
-        background-color: #78e08f;
+        background-color: #34495e;
         color: #000000;
         font-size: 46px;
     }
@@ -241,5 +241,6 @@
         align-items: center;
         justify-content: center;
     }
+    
 
 </style>

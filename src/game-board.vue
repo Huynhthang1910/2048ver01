@@ -1,37 +1,41 @@
 <template>
     <div class="game">
         <div class="board">
-            <GameCell :number="cell" v-for="cell in cells" :key="cell.id"></GameCell>
+            <game_cell :number="cell" v-for="cell in cells" :key="cell.id"></game_cell>
         </div>
-        <div class="buttons">
+        <div class="main-score">
             <div class="info">
-                <h3 class="text title">Welcome to 2048!</h3>
+                <h3 class="text title">Block number 2048</h3>
                 <p class="text">Your score: {{score}}</p>
             </div>
-            <div class="buttonsUp">
-                <button class="btn" @click="move('ArrowUp')">
-                    <img id="ArrowUp" src="./assets/up.png">
-                </button>
-            </div>
-            <div>
-                <button class="btn" @click="move('ArrowLeft')">
-                    <img id="ArrowLeft" src="./assets/left.png">
-                </button>
-                <button class="btn" @click="move('ArrowDown')">
-                    <img id="ArrowDown" src="./assets/down.png">
-                </button>
-                <button class="btn" @click="move('ArrowRight')">
-                    <img id="ArrowRight" src="./assets/right.png">
-                </button>
+            <div class="buttons">
+                <div class="buttons-Up">
+                    <button class="btn" @click="move('Up')">
+                        <img id="Up" src="./assets/up.png">
+                    </button>
+                </div>
+                <div class="buttons-middle">
+                    <button class="btn" @click="move('Left')">
+                        <img id="Left" src="./assets/left.png">
+                    </button>
+                    <button class="btn" @click="move('Right')">
+                        <img id="Right" src="./assets/right.png">
+                    </button>
+                </div>
+                <div class="buttons-Up">
+                    <button class="btn" @click="move('Down')">
+                        <img id="Down" src="./assets/down.png">
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 </template>
 <script>
-    import GameCell from "./GameCell";
+    import game_cell from "./game-cell";
 
     export default {
-        name: 'GameBoard',
+        name: 'game-board',
         data() {
             return {
                 cells: [],
@@ -80,7 +84,7 @@
                 return v === this.cells[i + 1] || v === this.cells[i - 1] || v === this.cells[i + 4] || v === this.cells[i - 4]
             },
             onkeydown(e) {
-                if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.code)) {
+                if (['Left', 'Right', 'Up', 'Down'].includes(e.code)) {
                     this.move(e.code)
                 }
             },
@@ -93,7 +97,7 @@
                 this.addCells();
                 this.$forceUpdate();
             },
-            ArrowLeft(k, arr) {
+            Left(k, arr) {
                 for (let i = 0; i < 16; i++) {
                     let index = i - 1;
                     if (k === 3 && index >= 0 && i % 4 !== 0 && this.cells[i] !== 0 && this.cells[index] === this.cells[i] && ![i].includes(arr)) {
@@ -108,7 +112,7 @@
                     }
                 }
             },
-            ArrowRight(k, arr) {
+            Right(k, arr) {
                 for (let i = 15; i >= 0; i--) {
                     let index = i + 1;
                     if (k === 3 && index < 16 && i % 4 !== 3 && this.cells[i] !== 0 && this.cells[index] === this.cells[i] && ![i].includes(arr)) {
@@ -126,7 +130,7 @@
 
 
             },
-            ArrowUp(k, arr) {
+            Up(k, arr) {
                 for (let i = 0; i < 16; i++) {
                     let index = i - 4;
                     if (k === 3 && index >= 0 && this.cells[index] === this.cells[i] && this.cells[i] !== 0 && ![i].includes(arr)) {
@@ -141,7 +145,7 @@
                 }
 
             },
-            ArrowDown(k, arr) {
+            Down(k, arr) {
                 for (let i = 16; i >= 0; i--) {
                     let index = i + 4;
                     if (k === 3 && index < 16 && this.cells[i] !== 0 && this.cells[index] === this.cells[i] && ![i].includes(arr)) {
@@ -172,7 +176,7 @@
         }
         ,
         components: {
-            GameCell
+            game_cell
         }
         ,
         props: {
@@ -181,6 +185,12 @@
     }
 </script>
 <style>
+    *{
+        transition: all 500ms ease;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
     .game {
         display: flex;
         justify-content: center;
@@ -196,7 +206,25 @@
         padding: 6px;
         border-radius: 8px;
     }
+    .info {
+    background-color: #cf6a87;
+    margin: 10px;
+    border-radius: 8px;
+    padding: 10px;
+}
 
+    .info h3 {
+        font-size: 25px;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #f1f2f6;
+    }
+
+    .info p {
+        font-size: 20px;
+        font-weight: bold;
+        color: #f1f2f6;
+    }
     .buttons {
         padding: 10px;
         margin: 10px;
@@ -205,17 +233,13 @@
 
     }
 
-    .buttonsUp {
+    .buttons-Up {
         display: flex;
         justify-content: center;
     }
 
     .info {
         text-align: center;
-    }
-
-    .welcomeText {
-        color: #555;
     }
 
     .effect {
@@ -245,8 +269,13 @@
     .btn img {
         width: 100%;
         height: 100%;
-        margin: 5px;
         position: relative;
+        object-fit: contain;
+    }
+        .buttons-middle {
+        display: flex;
+        justify-content: space-between;
+        margin: -6px;
     }
 
     @-webkit-keyframes effect_dylan {
@@ -287,6 +316,55 @@
     @media(max-width: 768px){
         .game {
             flex-direction: column;
+        }
+    }
+    @media only screen and (min-width:320px) and (max-width:1710px){
+        h3.text.title, p.text{
+        margin: 10px;
+        }
+    }
+    @media only screen and (min-width: 500px) and (max-width: 720px){
+        /* .container{
+            max-width: 500px;
+        } */
+        .board{
+            width: 450px;
+            height: 450px ;
+        }
+        .btn{
+            width: 65px;
+            height: 65px;
+        }
+
+    }
+    @media only screen and (min-width:320px) and (max-width:600px){
+        .board{
+            width: 300px!important;
+            height: 300px !important;
+        }
+        .btn{
+            width: 60px !important;
+            height: 60px !important;
+        }
+        .cell{
+            width:65px;
+        }
+        .buttons-middle {
+            margin: 24px !important;
+        }
+    }
+    @media only screen and (max-width: 767px){
+        .buttons-middle {
+            margin: 3px;
+        }
+    }
+    @media(max-width: 955px){
+        .btn{
+            width: 75px;
+            height: 75px;
+        }
+        .buttons-middle {
+            margin: 12px;
         }
     }
 
