@@ -241,6 +241,11 @@
         align-items: center;
         justify-content: center;
     }
+    @media only screen and (min-width:320px) and (max-width:600px){
+        .cell{
+            font-size: 16px;
+        }
+    }
 
 
 </style>

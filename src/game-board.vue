@@ -76,7 +76,7 @@
                             break;
                         }
                     }
-                    if (!turns) alert('Game Over!')
+                    if (!turns) alert("Bạn thua rồi, làm lại ván nữa nhá :>>")
                 }
             },
             checkTurns(i) {
