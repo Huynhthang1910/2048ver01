@@ -1,18 +1,18 @@
 <template>
     <div id="app">
         <div class="container">
-            <GameBoard/>
+            <game_board/>
         </div>
     </div>
 </template>
 
 <script>
-    import GameBoard from "./GameBoard";
+    import game_board from "./game-board";
 
     export default {
         name: "app",
         components: {
-            GameBoard
+            game_board
         }
     };
 </script>
@@ -26,6 +26,6 @@
 
     .container {
         margin: 30px auto;
-        width: 1200px;
+        max-width: 1200px;
     }
 </style>
